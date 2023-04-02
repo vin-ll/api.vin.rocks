@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { SkillsService } from './skills.service';
 import { AuthGuard } from '../auth/auth.guard';
 
@@ -29,6 +37,28 @@ export class SkillsController {
     error: string;
   }> {
     return this.skillsService.getSkill(id);
+  }
+
+  @UseGuards(AuthGuard)
+  @Put()
+  async putSkill(
+    @Body('id') id: string,
+    @Body('name') name: string,
+    @Body('type') type: string,
+    @Body('use') use: string,
+    @Body('dotColor') dotColor: string,
+  ): Promise<{
+    statusCode: number;
+    message: string;
+    data: {
+      name: string;
+      type: string;
+      use: string;
+      dotColor: string;
+    };
+    error: string;
+  }> {
+    return this.skillsService.putSkill(id, name, type, use, dotColor);
   }
 
   @UseGuards(AuthGuard)

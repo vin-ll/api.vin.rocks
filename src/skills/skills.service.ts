@@ -51,4 +51,29 @@ export class SkillsService {
       error: 'none',
     };
   }
+
+  async putSkill(
+    id: string,
+    name: string,
+    type: string,
+    use: string,
+    dotColor: string,
+  ) {
+    if (!id || !name || !use || !type || !dotColor) {
+      throw new BadRequestException('Invalid body');
+    }
+
+    const skill = new SkillModel(name, use, type, dotColor);
+
+    await skillSchema.updateOne({ _id: id }, skill).catch(() => {
+      throw new NotFoundException('Skill does not exist');
+    });
+
+    return {
+      statusCode: 200,
+      message: 'Skill successfully updated',
+      data: skill,
+      error: 'none',
+    };
+  }
 }
