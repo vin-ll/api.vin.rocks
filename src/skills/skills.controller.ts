@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { SkillsService } from './skills.service';
 import { AuthGuard } from '../auth/auth.guard';
 
@@ -14,6 +14,21 @@ export class SkillsController {
     error: string;
   }> {
     return this.skillsService.getSkills();
+  }
+
+  @Get(':id')
+  async getSkill(@Param('id') id: string): Promise<{
+    statusCode: number;
+    message: string;
+    data: {
+      name: string;
+      use: string;
+      type: string;
+      dotColor: string;
+    };
+    error: string;
+  }> {
+    return this.skillsService.getSkill(id);
   }
 
   @UseGuards(AuthGuard)

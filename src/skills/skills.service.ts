@@ -3,6 +3,7 @@ import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
+  NotFoundException,
 } from '@nestjs/common';
 import skillSchema from '../database/skill.schema';
 
@@ -34,6 +35,19 @@ export class SkillsService {
       statusCode: 200,
       message: 'Skills successfully fetched',
       data: skills,
+      error: 'none',
+    };
+  }
+
+  async getSkill(id: string) {
+    const skill = await skillSchema.findOne({ _id: id });
+    if (!skill) {
+      throw new NotFoundException('Skill does not exist');
+    }
+    return {
+      statusCode: 200,
+      message: 'Skill successfully fetched',
+      data: skill,
       error: 'none',
     };
   }
