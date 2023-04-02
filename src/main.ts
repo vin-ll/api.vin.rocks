@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import mongoose, { ConnectOptions } from 'mongoose';
-import { config } from 'dotenv';
-config();
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 mongoose
   .connect(
