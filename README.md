@@ -31,6 +31,7 @@
 | /api/posts/:id | PUT | Update a specific post by ID |
 | /api/posts/:id | DELETE | Delete a specific post by ID |
 | /api/skills | GET | Get all skills |
+| /api/skills/:id | GET | Get a specific skill by ID |
 | /api/skills | POST | Create a new skill |
 | /api/skills/:id | PUT | Update a specific skill by ID |
 | /api/skills/:id | DELETE | Delete a specific skill by ID |
