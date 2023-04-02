@@ -12,7 +12,6 @@
 
 - Fast and efficient endpoints for my website https://vin.rocks
 - Secure user authentication and authorization using JWT
-- Simple and intuitive API documentation using Swagger UI
 - Built with NestJS, a modern and flexible Node.js framework
 - Written in TypeScript for better type safety and maintainability
 - Uses MongoDB as a database for scalability and flexibility
