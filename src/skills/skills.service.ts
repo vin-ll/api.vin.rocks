@@ -91,10 +91,6 @@ export class SkillsService {
         error: 'none',
       };
 
-    return {
-      statusCode: 404,
-      message: 'Skill deletion failed',
-      error: 'none',
-    };
+    throw new NotFoundException('Project not found');
   }
 }
