@@ -6,17 +6,9 @@ export class UsersService {
   private readonly userData = [
     {
       id: 1,
-      username: 'vin',
-      password:
-        '$argon2id$v=19$m=65536,t=3,p=4$83Lrd93MOkj4qhiKcODzYw$3rJgeQfPSL0jpbpkw3+lzxTHhh7PnMDFaYGUhMDVSgQ',
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
       role: 1,
-    },
-    {
-      id: 1,
-      username: 'vin2',
-      password:
-        '$argon2id$v=19$m=65536,t=3,p=4$83Lrd93MOkj4qhiKcODzYw$3rJgeQfPSL0jpbpkw3+lzxTHhh7PnMDFaYGUhMDVSgQ',
-      role: 2,
     },
   ];
 
