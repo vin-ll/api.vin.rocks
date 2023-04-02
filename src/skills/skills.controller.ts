@@ -6,6 +6,7 @@ import {
   Post,
   Put,
   UseGuards,
+  Delete,
 } from '@nestjs/common';
 import { SkillsService } from './skills.service';
 import { AuthGuard } from '../auth/auth.guard';
@@ -59,6 +60,16 @@ export class SkillsController {
     error: string;
   }> {
     return this.skillsService.putSkill(id, name, type, use, dotColor);
+  }
+
+  @UseGuards(AuthGuard)
+  @Delete()
+  async deleteSkill(@Body('id') id: string): Promise<{
+    statusCode: number;
+    message: string;
+    error: string;
+  }> {
+    return this.skillsService.deleteSkill(id);
   }
 
   @UseGuards(AuthGuard)

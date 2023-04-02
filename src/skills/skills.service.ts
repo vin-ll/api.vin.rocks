@@ -76,4 +76,25 @@ export class SkillsService {
       error: 'none',
     };
   }
+
+  async deleteSkill(id: string) {
+    if (!id) {
+      throw new BadRequestException('Invalid body');
+    }
+
+    const skill = await skillSchema.deleteOne({ _id: id });
+
+    if (skill.deletedCount > 0)
+      return {
+        statusCode: 200,
+        message: 'Skill successfully deleted',
+        error: 'none',
+      };
+
+    return {
+      statusCode: 404,
+      message: 'Skill deletion failed',
+      error: 'none',
+    };
+  }
 }
