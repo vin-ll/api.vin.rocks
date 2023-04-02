@@ -21,15 +21,6 @@
 | Route | Method | Description |
 | --- | --- | --- |
 | /api/auth/login | POST | Authenticate a user and generate a JWT |
-| /api/auth/register | POST | Register a new user |
-| /api/users/:id | GET | Get a specific user by ID |
-| /api/users/:id | PUT | Update a specific user by ID |
-| /api/users/:id | DELETE | Delete a specific user by ID |
-| /api/posts | GET | Get all posts |
-| /api/posts/:id | GET | Get a specific post by ID |
-| /api/posts | POST | Create a new post |
-| /api/posts/:id | PUT | Update a specific post by ID |
-| /api/posts/:id | DELETE | Delete a specific post by ID |
 | /api/skills | GET | Get all skills |
 | /api/skills/:id | GET | Get a specific skill by ID |
 | /api/skills | POST | Create a new skill |
