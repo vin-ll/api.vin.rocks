@@ -111,10 +111,6 @@ export class ProjectsService {
         error: 'none',
       };
 
-    return {
-      statusCode: 404,
-      message: 'Project deletion failed',
-      error: 'none',
-    };
+    throw new NotFoundException('Project not found');
   }
 }
