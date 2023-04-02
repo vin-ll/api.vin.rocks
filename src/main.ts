@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 import mongoose, { ConnectOptions } from 'mongoose';
 import * as dotenv from 'dotenv';
 dotenv.config();
+import helmet from 'helmet';
+import csurf from 'csurf';
 
 mongoose
   .connect(
@@ -18,6 +20,9 @@ mongoose
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.use(helmet());
+  app.enableCors();
+  app.use(csurf());
   await app.listen(3001);
 }
 bootstrap();

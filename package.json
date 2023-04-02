@@ -26,7 +26,9 @@
     "@nestjs/platform-express": "^9.0.0",
     "@types/bcrypt": "^5.0.0",
     "argon2": "^0.30.3",
+    "csurf": "^1.11.0",
     "dotenv": "^16.0.3",
+    "helmet": "^6.0.1",
     "mongoose": "^7.0.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0"
