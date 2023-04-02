@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('projects')
 export class ProjectsController {
@@ -31,6 +32,7 @@ export class ProjectsController {
     return this.projectsService.getProject(id);
   }
 
+  @UseGuards(AuthGuard)
   @Post()
   async postProject(
     @Body('name') name: string,

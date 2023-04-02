@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { SkillsService } from './skills.service';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('skills')
 export class SkillsController {
@@ -15,6 +16,7 @@ export class SkillsController {
     return this.skillsService.getSkills();
   }
 
+  @UseGuards(AuthGuard)
   @Post()
   postSkill(
     @Body('name') name: string,
