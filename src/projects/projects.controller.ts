@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { ProjectsService } from './projects.service';
 import { AuthGuard } from '../auth/auth.guard';
 
@@ -30,6 +38,37 @@ export class ProjectsController {
     error: string;
   }> {
     return this.projectsService.getProject(id);
+  }
+
+  @UseGuards(AuthGuard)
+  @Put()
+  async putProject(
+    @Body('id') id: string,
+    @Body('name') name: string,
+    @Body('description') description: string,
+    @Body('link') link: string,
+    @Body('dotColor') dotColor: string,
+    @Body('language') language: string,
+  ): Promise<{
+    statusCode: number;
+    message: string;
+    data: {
+      name: string;
+      description: string;
+      link: string;
+      dotColor: string;
+      language: string;
+    };
+    error: string;
+  }> {
+    return this.projectsService.putProject(
+      id,
+      name,
+      description,
+      link,
+      dotColor,
+      language,
+    );
   }
 
   @UseGuards(AuthGuard)

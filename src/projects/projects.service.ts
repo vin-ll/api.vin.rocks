@@ -64,4 +64,36 @@ export class ProjectsService {
       error: 'none',
     };
   }
+
+  async putProject(
+    id: string,
+    name: string,
+    description: string,
+    link: string,
+    dotColor: string,
+    language: string,
+  ) {
+    if (!id || !name || !description || !link || !dotColor || !language) {
+      throw new BadRequestException('Invalid body');
+    }
+
+    const project = new ProjectModel(
+      name,
+      description,
+      link,
+      dotColor,
+      language,
+    );
+
+    await projectSchema.updateOne({ _id: id }, project).catch(() => {
+      throw new NotFoundException('Project does not exist');
+    });
+
+    return {
+      statusCode: 200,
+      message: 'Project successfully updated',
+      data: project,
+      error: 'none',
+    };
+  }
 }
