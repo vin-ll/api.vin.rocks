@@ -112,7 +112,7 @@ export class ProjectsService {
       };
 
     return {
-      statusCode: 200,
+      statusCode: 404,
       message: 'Project deletion failed',
       error: 'none',
     };
