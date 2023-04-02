@@ -96,4 +96,25 @@ export class ProjectsService {
       error: 'none',
     };
   }
+
+  async deleteProject(id: string) {
+    if (!id) {
+      throw new BadRequestException('Invalid body');
+    }
+
+    const project = await projectSchema.deleteOne({ _id: id });
+
+    if (project.deletedCount > 0)
+      return {
+        statusCode: 200,
+        message: 'Project successfully deleted',
+        error: 'none',
+      };
+
+    return {
+      statusCode: 200,
+      message: 'Project deletion failed',
+      error: 'none',
+    };
+  }
 }

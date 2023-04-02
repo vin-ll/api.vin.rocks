@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -38,6 +39,16 @@ export class ProjectsController {
     error: string;
   }> {
     return this.projectsService.getProject(id);
+  }
+
+  @UseGuards(AuthGuard)
+  @Delete()
+  async deleteProject(@Body('id') id: string): Promise<{
+    statusCode: number;
+    message: string;
+    error: string;
+  }> {
+    return this.projectsService.deleteProject(id);
   }
 
   @UseGuards(AuthGuard)
